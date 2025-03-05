@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Gestão de Funcionários</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fa;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh; 
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background-color: #00a2ff;
+            padding: 20px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header h1 {
+            color: #fff;
+            font-size: 1.8rem;
+            margin-left: 15px; 
+        }
+
+        header .logo {
+            width: 40px; 
+            height: 40px; 
+            margin-right: 10px; 
+        }
+
+        header nav ul {
+            display: flex;
+            gap: 20px;
+        }
+
+        header nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        header nav a:hover {
+            color: #f1f1f1;
+        }
+
+        main {
+            flex: 1;
+            padding: 20px;
+        }
+
+        section {
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table th, table td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        table th {
+            background-color: #f1f1f1;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        label {
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        input {
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Estilo do footer fixo */
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer p {
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        main {
+            padding-bottom: 60px; /* Espaço para o footer */
+        }
+
+        /* Estilo para os botões quando clicados */
+        .btn-enviado {
+            background-color: green !important;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabeçalho -->
+    <header>
+        <div class="container">
+            <!-- Adicionando a imagem diretamente no HTML -->
+            <img src="https://www.google.com/imgres?q=imagem%20de%20%20perfil&imgurl=https%3A%2F%2Fimg.freepik.com%2Fvetores-premium%2Ficone-perfil-simples-cor-branco-icone_1076610-50204.jpg%3Fsemt%3Dais_hybrid&imgrefurl=https%3A%2F%2Fbr.freepik.com%2Ffotos-vetores-gratis%2Fperfil&docid=Sifxxggfrf0fAM&tbnid=JzPz8jD5PvPbyM&vet=12ahUKEwjGv-yd2fOLAxVNrZUCHYPsDKEQM3oECBoQAA..i&w=626&h=626&hcb=2&ved=2ahUKEwjGv-yd2fOLAxVNrZUCHYPsDKEQM3oECBoQAA" alt="Logo" class="logo">
+            <h1>Gestão de Funcionários</h1>
+            <nav>
+                <ul>
+                    <li><a href="#listar">Listar Funcionários</a></li>
+                    <li><a href="#cadastrar">Cadastrar Funcionário</a></li>
+                    <li><a href="#atualizar">Atualizar Dados</a></li>
+                    <li><a href="#excluir">Excluir Funcionário</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main>
+        <!-- Seções -->
+        <section id="listar">
+            <h2>Listar Funcionários</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>CPF</th>
+                        <th>Email</th>
+                        <th>Telefone</th>
+                        <th>Seção</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Luiz Gustavo Fernandes</td>
+                        <td>123.456.789-00</td>
+                        <td>luizgustavo@exemplo.com</td>
+                        <td>(35) 98765-4321</td>
+                        <td>TI</td>
+                        <td><a href="#">Editar</a> | <a href="#">Excluir</a></td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Joao Davi Muroni</td>
+                        <td>123.456.789-00</td>
+                        <td>Joaodavi@exemplo.com</td>
+                        <td>(35) 98765-4321</td>
+                        <td>TI</td>
+                        <td><a href="#">Editar</a> | <a href="#">Excluir</a></td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Francisco Freitas</td>
+                        <td>123.456.789-00</td>
+                        <td>Freitas@exemplo.com</td>
+                        <td>(35) 98765-4321</td>
+                        <td>TI</td>
+                        <td><a href="#">Editar</a> | <a href="#">Excluir</a></td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Matheus Jose</td>
+                        <td>123.456.789-00</td>
+                        <td>Matheus@exemplo.com</td>
+                        <td>(35) 98765-4321</td>
+                        <td>TI</td>
+                        <td><a href="#">Editar</a> | <a href="#">Excluir</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="cadastrar">
+            <h2>Cadastrar Novo Funcionário</h2>
+            <form action="#" method="POST" onsubmit="mudarCorBotao(event)">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" required>
+                
+                <label for="registro">Número de Registro:</label>
+                <input type="text" id="registro" name="registro" required>
+
+                <label for="cpf">CPF:</label>
+                <input type="text" id="cpf" name="cpf" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="telefone">Telefone:</label>
+                <input type="text" id="telefone" name="telefone" required>
+
+                <label for="secao">Seção:</label>
+                <input type="text" id="secao" name="secao" required>
+
+                <button type="submit">Cadastrar Funcionário</button>
+            </form>
+        </section>
+
+        <section id="atualizar">
+            <h2>Atualizar Dados do Funcionário</h2>
+            <form action="#" method="POST" onsubmit="mudarCorBotao(event)">
+                <label for="id_atualizar">ID do Funcionário:</label>
+                <input type="text" id="id_atualizar" name="id_atualizar" required>
+                
+                <label for="nome_atualizar">Nome:</label>
+                <input type="text" id="nome_atualizar" name="nome_atualizar" required>
+
+                <label for="cpf_atualizar">CPF:</label>
+                <input type="text" id="cpf_atualizar" name="cpf_atualizar" required>
+
+                <label for="email_atualizar">Email:</label>
+                <input type="email" id="email_atualizar" name="email_atualizar" required>
+
+                <label for="telefone_atualizar">Telefone:</label>
+                <input type="text" id="telefone_atualizar" name="telefone_atualizar" required>
+
+                <label for="secao_atualizar">Seção:</label>
+                <input type="text" id="secao_atualizar" name="secao_atualizar" required>
+
+                <button type="submit">Atualizar Funcionário</button>
+            </form>
+        </section>
+
+        <section id="excluir">
+            <h2>Excluir Funcionário</h2>
+            <form action="#" method="POST" onsubmit="mudarCorBotao(event)">
+                <label for="id_excluir">ID do Funcionário:</label>
+                <input type="text" id="id_excluir" name="id_excluir" required>
+
+                <button type="submit">Excluir Funcionário</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>&copy; 2025 Sistema de Gestão de Funcionários. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        function mudarCorBotao(event) {
+            event.preventDefault(); // Evita que o formulário seja enviado automaticamente
+            const botao = event.target.querySelector('button');
+            botao.classList.add('btn-enviado'); // Muda a cor do botão para verde
+
+            // Simula o envio do formulário e volta ao estado normal após 2 segundos
+            setTimeout(function() {
+                botao.classList.remove('btn-enviado'); // Volta a cor para o estado original
+                alert('Formulário enviado com sucesso!'); // Exibe uma mensagem de sucesso (opcional)
+            }, 2000); // Depois de 2 segundos (2000 milissegundos)
+        }
+    </script>
+
+</body>
+</html>
