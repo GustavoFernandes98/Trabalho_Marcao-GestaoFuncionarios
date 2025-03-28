@@ -5,157 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Gestão de Funcionários</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f7fa;
-            color: #333;
-            margin: 0;
-            padding: 0;
-            min-height: 100vh; 
-            display: flex;
-            flex-direction: column;
-        }
-
-        header {
-            background-color: #00a2ff;
-            padding: 20px 0;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        header h1 {
-            color: #fff;
-            font-size: 1.8rem;
-            margin-left: 15px; 
-        }
-
-        header .logo {
-            width: 40px; 
-            height: 40px; 
-            margin-right: 10px; 
-        }
-
-        header nav ul {
-            display: flex;
-            gap: 20px;
-        }
-
-        header nav a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 1rem;
-            transition: color 0.3s ease;
-        }
-
-        header nav a:hover {
-            color: #f1f1f1;
-        }
-
-        main {
-            flex: 1;
-            padding: 20px;
-        }
-
-        section {
-            padding: 20px;
-            margin-top: 20px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        table th, table td {
-            padding: 12px;
-            text-align: left;
-            border: 1px solid #ddd;
-        }
-
-        table th {
-            background-color: #f1f1f1;
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        label {
-            font-size: 1rem;
-            font-weight: bold;
-        }
-
-        input {
-            padding: 10px;
-            font-size: 1rem;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        button {
-            background-color: #007bff;
-            color: white;
-            padding: 10px;
-            font-size: 1rem;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        button:hover {
-            background-color: #0056b3;
-        }
-
-        /* Estilo do footer fixo */
-        footer {
-            background-color: #333;
-            color: #fff;
-            padding: 20px 0;
-            text-align: center;
-            position: fixed;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-        }
-
-        footer p {
-            font-size: 1rem;
-            margin: 0;
-        }
-
-        main {
-            padding-bottom: 60px; /* Espaço para o footer */
-        }
-
-        /* Estilo para os botões quando clicados */
-        .btn-enviado {
-            background-color: green !important;
-            color: white;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css"> <!-- Link para o CSS -->
+    <script src="script.js" defer></script> <!-- Link para o JavaScript externo -->
 </head>
 <body>
 
     <!-- Cabeçalho -->
     <header>
         <div class="container">
-            <!-- Adicionando a imagem diretamente no HTML -->
-            <img src="https://www.google.com/imgres?q=imagem%20de%20%20perfil&imgurl=https%3A%2F%2Fimg.freepik.com%2Fvetores-premium%2Ficone-perfil-simples-cor-branco-icone_1076610-50204.jpg%3Fsemt%3Dais_hybrid&imgrefurl=https%3A%2F%2Fbr.freepik.com%2Ffotos-vetores-gratis%2Fperfil&docid=Sifxxggfrf0fAM&tbnid=JzPz8jD5PvPbyM&vet=12ahUKEwjGv-yd2fOLAxVNrZUCHYPsDKEQM3oECBoQAA..i&w=626&h=626&hcb=2&ved=2ahUKEwjGv-yd2fOLAxVNrZUCHYPsDKEQM3oECBoQAA" alt="Logo" class="logo">
             <h1>Gestão de Funcionários</h1>
             <nav>
                 <ul>
@@ -163,6 +20,8 @@
                     <li><a href="#cadastrar">Cadastrar Funcionário</a></li>
                     <li><a href="#atualizar">Atualizar Dados</a></li>
                     <li><a href="#excluir">Excluir Funcionário</a></li>
+                    <li><a href="#vacina">Registrar Vacinação</a></li>
+                    <li><a href="#agendar">Agendar Vacina</a></li> <!-- Link para agendar vacina -->
                 </ul>
             </nav>
         </div>
@@ -170,9 +29,14 @@
 
     <!-- Conteúdo Principal -->
     <main>
-        <!-- Seções -->
+        <!-- Seção de Listagem -->
         <section id="listar">
             <h2>Listar Funcionários</h2>
+            <label for="filtroNome">Filtrar por Nome:</label>
+            <input type="text" id="filtroNome" placeholder="Digite para filtrar...">
+            <label for="filtroVacina">Filtrar por Tipo de Vacina:</label>
+            <input type="text" id="filtroVacina" placeholder="Digite para filtrar...">
+            
             <table>
                 <thead>
                     <tr>
@@ -182,10 +46,12 @@
                         <th>Email</th>
                         <th>Telefone</th>
                         <th>Seção</th>
+                        <th>Tipo de Vacina</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="tabela-funcionarios">
+                    <!-- Exemplos de Funcionários -->
                     <tr>
                         <td>1</td>
                         <td>Luiz Gustavo Fernandes</td>
@@ -193,42 +59,27 @@
                         <td>luizgustavo@exemplo.com</td>
                         <td>(35) 98765-4321</td>
                         <td>TI</td>
+                        <td>CoronaVac</td>
                         <td><a href="#">Editar</a> | <a href="#">Excluir</a></td>
                     </tr>
                     <tr>
-                        <td>1</td>
-                        <td>Joao Davi Muroni</td>
-                        <td>123.456.789-00</td>
-                        <td>Joaodavi@exemplo.com</td>
-                        <td>(35) 98765-4321</td>
-                        <td>TI</td>
-                        <td><a href="#">Editar</a> | <a href="#">Excluir</a></td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Francisco Freitas</td>
-                        <td>123.456.789-00</td>
-                        <td>Freitas@exemplo.com</td>
-                        <td>(35) 98765-4321</td>
-                        <td>TI</td>
-                        <td><a href="#">Editar</a> | <a href="#">Excluir</a></td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Matheus Jose</td>
-                        <td>123.456.789-00</td>
-                        <td>Matheus@exemplo.com</td>
-                        <td>(35) 98765-4321</td>
-                        <td>TI</td>
+                        <td>2</td>
+                        <td>João Davi Muroni</td>
+                        <td>987.654.321-00</td>
+                        <td>joaodavi@exemplo.com</td>
+                        <td>(11) 91234-5678</td>
+                        <td>RH</td>
+                        <td>AstraZeneca</td>
                         <td><a href="#">Editar</a> | <a href="#">Excluir</a></td>
                     </tr>
                 </tbody>
             </table>
         </section>
 
+        <!-- Seção de Cadastro -->
         <section id="cadastrar">
             <h2>Cadastrar Novo Funcionário</h2>
-            <form action="#" method="POST" onsubmit="mudarCorBotao(event)">
+            <form action="#" method="POST">
                 <label for="nome">Nome:</label>
                 <input type="text" id="nome" name="nome" required>
                 
@@ -251,9 +102,10 @@
             </form>
         </section>
 
+        <!-- Seção de Atualização -->
         <section id="atualizar">
             <h2>Atualizar Dados do Funcionário</h2>
-            <form action="#" method="POST" onsubmit="mudarCorBotao(event)">
+            <form action="#" method="POST">
                 <label for="id_atualizar">ID do Funcionário:</label>
                 <input type="text" id="id_atualizar" name="id_atualizar" required>
                 
@@ -276,35 +128,60 @@
             </form>
         </section>
 
+        <!-- Seção de Excluir -->
         <section id="excluir">
             <h2>Excluir Funcionário</h2>
-            <form action="#" method="POST" onsubmit="mudarCorBotao(event)">
+            <form action="#" method="POST">
                 <label for="id_excluir">ID do Funcionário:</label>
                 <input type="text" id="id_excluir" name="id_excluir" required>
 
                 <button type="submit">Excluir Funcionário</button>
             </form>
         </section>
+
+        <!-- Seção de Vacinação -->
+        <section id="vacina">
+            <h2>Registrar Aplicação de Vacina</h2>
+            <form id="formRegistrarVacina">
+                <label for="funcionarioVacinado">Funcionário Vacinado:</label>
+                <input type="text" id="funcionarioVacinado" required>
+
+                <label for="responsavel">Funcionário Responsável:</label>
+                <input type="text" id="responsavel" required>
+
+                <label for="dataAplicacao">Data de Aplicação:</label>
+                <input type="date" id="dataAplicacao" required>
+
+                <label for="tipoVacina">Tipo de Vacina:</label>
+                <input type="text" id="tipoVacina" required>
+
+                <button type="submit">Registrar Vacinação</button>
+            </form>
+        </section>
+
+        <!-- Seção de Agendar Vacina -->
+        <section id="agendar">
+            <h2>Agendar Vacinação</h2>
+            <form id="formAgendarVacina">
+                <label for="funcionarioAgendado">Funcionário:</label>
+                <input type="text" id="funcionarioAgendado" required>
+
+                <label for="dataAgendamento">Data do Agendamento:</label>
+                <input type="date" id="dataAgendamento" required min="2025-03-29"> <!-- Data futura -->
+
+                <label for="tipoVacinaAgendada">Tipo de Vacina:</label>
+                <input type="text" id="tipoVacinaAgendada" required>
+
+                <button type="submit">Agendar Vacinação</button>
+            </form>
+        </section>
+
     </main>
 
     <!-- Rodapé -->
     <footer>
-        <p>&copy; 2025 Sistema de Gestão de Funcionários. Todos os direitos reservados.</p>
+        <p>&copy; 2025 Gestão de Funcionários - Todos os direitos reservados</p>
     </footer>
-
-    <script>
-        function mudarCorBotao(event) {
-            event.preventDefault(); // Evita que o formulário seja enviado automaticamente
-            const botao = event.target.querySelector('button');
-            botao.classList.add('btn-enviado'); // Muda a cor do botão para verde
-
-            // Simula o envio do formulário e volta ao estado normal após 2 segundos
-            setTimeout(function() {
-                botao.classList.remove('btn-enviado'); // Volta a cor para o estado original
-                alert('Formulário enviado com sucesso!'); // Exibe uma mensagem de sucesso (opcional)
-            }, 2000); // Depois de 2 segundos (2000 milissegundos)
-        }
-    </script>
 
 </body>
 </html>
