@@ -22,6 +22,8 @@
                     <li><a href="#excluir">Excluir Funcionário</a></li>
                     <li><a href="#vacina">Registrar Vacinação</a></li>
                     <li><a href="#agendar">Agendar Vacina</a></li> <!-- Link para agendar vacina -->
+                    <li><a href="#vacinas-dia">Vacinas de Hoje</a></li> <!-- Link para as vacinas de hoje -->
+                    <li><a href="#cartao-vacina">Cartão de Vacina</a></li> <!-- Link para o cartão de vacina -->
                 </ul>
             </nav>
         </div>
@@ -72,6 +74,46 @@
                         <td>AstraZeneca</td>
                         <td><a href="#">Editar</a> | <a href="#">Excluir</a></td>
                     </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Seção de Vacinas a Serem Aplicadas Hoje -->
+        <section id="vacinas-dia">
+            <h2>Vacinas a Serem Aplicadas Hoje</h2>
+            <label for="filtroData">Filtrar por Data:</label>
+            <input type="date" id="filtroData" required>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome do Funcionário</th>
+                        <th>Data da Vacinação</th>
+                        <th>Tipo de Vacina</th>
+                    </tr>
+                </thead>
+                <tbody id="tabela-vacinas-dia">
+                    <!-- A lista de vacinas a serem aplicadas hoje será preenchida via JavaScript -->
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Seção de Cartão de Vacina (Histórico de Vacinas Aplicadas) -->
+        <section id="cartao-vacina">
+            <h2>Cartão de Vacina</h2>
+            <label for="filtroFuncionario">Filtrar por Funcionário:</label>
+            <input type="text" id="filtroFuncionario" placeholder="Digite o nome do funcionário...">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Tipo de Vacina</th>
+                        <th>Data de Aplicação</th>
+                    </tr>
+                </thead>
+                <tbody id="tabela-cartao-vacina">
+                    <!-- O histórico de vacinas aplicadas será preenchido via JavaScript -->
                 </tbody>
             </table>
         </section>

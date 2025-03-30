@@ -2,10 +2,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Filtro de Funcionários
     const inputFiltroNome = document.getElementById('filtroNome');
+    const inputFiltroVacina = document.getElementById('filtroVacina');
     const tabelaFuncionarios = document.getElementById('tabela-funcionarios');
     
     inputFiltroNome.addEventListener('change', function () {
-        const filtro = inputFiltroNome.value.toLowerCase(); // Termo de filtro
+        const filtroNome = inputFiltroNome.value.toLowerCase(); // Termo de filtro
         const linhas = tabelaFuncionarios.getElementsByTagName('tr'); // Linhas da tabela
 
         // Percorrendo todas as linhas da tabela
@@ -16,7 +17,28 @@ document.addEventListener("DOMContentLoaded", function () {
                 const nomeText = nomeFuncionario.textContent.toLowerCase();
                 
                 // Verifica se o nome do funcionário contém o termo de filtro
-                if (nomeText.indexOf(filtro) > -1) {
+                if (nomeText.indexOf(filtroNome) > -1) {
+                    linhas[i].style.display = ''; // Exibe a linha
+                } else {
+                    linhas[i].style.display = 'none'; // Esconde a linha
+                }
+            }
+        }
+    });
+
+    inputFiltroVacina.addEventListener('change', function () {
+        const filtroVacina = inputFiltroVacina.value.toLowerCase(); // Termo de filtro
+        const linhas = tabelaFuncionarios.getElementsByTagName('tr'); // Linhas da tabela
+
+        // Percorrendo todas as linhas da tabela
+        for (let i = 0; i < linhas.length; i++) {
+            const vacinaFuncionario = linhas[i].getElementsByTagName('td')[6]; // Tipo de vacina está na sétima coluna (índice 6)
+            
+            if (vacinaFuncionario) {
+                const vacinaText = vacinaFuncionario.textContent.toLowerCase();
+                
+                // Verifica se o tipo de vacina do funcionário contém o termo de filtro
+                if (vacinaText.indexOf(filtroVacina) > -1) {
                     linhas[i].style.display = ''; // Exibe a linha
                 } else {
                     linhas[i].style.display = 'none'; // Esconde a linha
