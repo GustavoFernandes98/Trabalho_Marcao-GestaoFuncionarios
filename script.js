@@ -158,4 +158,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const formAgendarVacina = document.getElementById("formAgendarVacina");
     if (formAgendarVacina) formAgendarVacina.addEventListener("submit", validarDataFutura);
+    function carregarFuncionarios() {
+        fetch('https://api.exemplo.com/funcionarios')
+            .then(response => response.json())
+            .then(data => {
+                const selectFuncionario = document.getElementById('funcionarioVacinado');
+                data.forEach(funcionario => {
+                    const option = document.createElement('option');
+                    option.value = funcionario.id;
+                    option.textContent = funcionario.nome;
+                    selectFuncionario.appendChild(option);
+                });
+            })
+            .catch(error => console.error('Erro ao carregar funcionários:', error));
+    }
+    
+    document.addEventListener('DOMContentLoaded', carregarFuncionarios);
+    
+
 });
